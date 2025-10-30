@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erp.biz.student.mapper.BizStudentMapper">
+    <resultMap type="com.erp.biz.student.domain.BizStudent" id="BizStudentResult">
+        <id property="id" column="id"/> 
+        <result property="studentName" column="student_name"/> 
+        <result property="gender" column="gender"/> 
+        <result property="classId" column="class_id"/> 
+        <result property="age" column="age"/> 
+        <result property="phone" column="phone"/> 
+        <result property="address" column="address"/> 
+        <result property="createTime" column="create_time"/> 
+        <result property="updateTime" column="update_time"/> 
+        <result property="remark" column="remark"/> 
+    </resultMap>
+
+    <sql id="selectBizStudentVo">
+        select id, student_name, gender, class_id, age, phone, address, create_time, update_time, remark
+        from biz_student
+    </sql>
+
+    <select id="selectBizStudentList" resultMap="BizStudentResult">
+        <include refid="selectBizStudentVo"/>
+        <where>
+            <if test="studentName != null  and studentName != ''">
+                AND student_name like concat('%', #{studentName}, '%')
+            </if>
+            <if test="gender != null  and gender != ''">
+                AND gender = #{gender}
+            </if>
+            <if test="classId != null ">
+                AND class_id = #{classId}
+            </if>
+            <if test="age != null ">
+                AND age = #{age}
+            </if>
+            <if test="phone != null  and phone != ''">
+                AND phone like concat('%', #{phone}, '%')
+            </if>
+            <if test="address != null  and address != ''">
+                AND address like concat('%', #{address}, '%')
+            </if>
+            <if test="createTime != null ">
+                AND create_time = #{createTime}
+            </if>
+            <if test="updateTime != null ">
+                AND update_time = #{updateTime}
+            </if>
+            <if test="remark != null  and remark != ''">
+                AND remark like concat('%', #{remark}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="selectBizStudentById" parameterType="Long" resultMap="BizStudentResult">
+        <include refid="selectBizStudentVo"/>
+        where id = #{id}
+    </select>
+</mapper>

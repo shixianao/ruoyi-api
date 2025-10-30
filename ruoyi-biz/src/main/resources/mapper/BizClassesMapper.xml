@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erp.biz.classes.mapper.BizClassesMapper">
+    <resultMap type="com.erp.biz.classes.domain.BizClasses" id="BizClassesResult">
+        <id property="id" column="id"/> 
+        <result property="className" column="class_name"/> 
+        <result property="description" column="description"/> 
+        <result property="headTeacher" column="head_teacher"/> 
+        <result property="studentCount" column="student_count"/> 
+        <result property="createTime" column="create_time"/> 
+        <result property="updateTime" column="update_time"/> 
+        <result property="remark" column="remark"/> 
+    </resultMap>
+
+    <sql id="selectBizClassesVo">
+        select id, class_name, description, head_teacher, student_count, create_time, update_time, remark
+        from biz_classes
+    </sql>
+
+    <select id="selectBizClassesList" resultMap="BizClassesResult">
+        <include refid="selectBizClassesVo"/>
+        <where>
+            <if test="className != null  and className != ''">
+                AND class_name like concat('%', #{className}, '%')
+            </if>
+            <if test="description != null  and description != ''">
+                AND description like concat('%', #{description}, '%')
+            </if>
+            <if test="headTeacher != null  and headTeacher != ''">
+                AND head_teacher like concat('%', #{headTeacher}, '%')
+            </if>
+            <if test="studentCount != null ">
+                AND student_count = #{studentCount}
+            </if>
+            <if test="createTime != null ">
+                AND create_time = #{createTime}
+            </if>
+            <if test="updateTime != null ">
+                AND update_time = #{updateTime}
+            </if>
+            <if test="remark != null  and remark != ''">
+                AND remark like concat('%', #{remark}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id="selectBizClassesById" parameterType="Long" resultMap="BizClassesResult">
+        <include refid="selectBizClassesVo"/>
+        where id = #{id}
+    </select>
+</mapper>
