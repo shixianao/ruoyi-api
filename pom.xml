@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.erp</groupId>
+	<artifactId>ruoyi-parent</artifactId>
+	<version>${ruoyi.version}</version>
+
+	<name>ruoyi-parent</name>
+	<description>若依管理系统管理系统</description>
+
+	<properties>
+		<ruoyi.version>1.0.0</ruoyi.version>
+		<weixin-java-mp.version>4.3.0</weixin-java-mp.version>
+        <weixin-java-miniapp.version>4.3.0</weixin-java-miniapp.version>
+		<spring-boot.version>2.6.6</spring-boot.version>
+		<spring-boot-admin.version>2.6.6</spring-boot-admin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		<druid.version>1.2.6</druid.version>
+		<knife4j.version>3.0.3</knife4j.version>
+		<poi.version>4.1.2</poi.version>
+		<velocity.version>1.7</velocity.version>
+		<jwt.version>0.9.1</jwt.version>
+		<mybatis-plus.version>3.5.1</mybatis-plus.version>
+		<diboot.version>2.5.0</diboot.version>
+		<hutool.version>5.6.5</hutool.version>
+		<feign.version>3.1.1</feign.version>
+		<feign-okhttp.version>11.8</feign-okhttp.version>
+		<redisson.version>3.15.2</redisson.version>
+        <mapstruct.version>1.4.1.Final</mapstruct.version>
+        <lombok.version>1.18.22</lombok.version>
+	</properties>
+
+	<!-- 依赖声明 -->
+	<dependencyManagement>
+		<dependencies>
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-mp</artifactId>
+                <version>${weixin-java-mp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-miniapp</artifactId>
+                <version>${weixin-java-miniapp.version}</version>
+            </dependency>
+	        <dependency>
+	            <groupId>org.mapstruct</groupId>
+	            <artifactId>mapstruct</artifactId>
+	            <version>${mapstruct.version}</version>
+	        </dependency>
+
+			<dependency>
+				<groupId>com.diboot</groupId>
+				<artifactId>diboot-core</artifactId>
+				<version>${diboot.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-to-slf4j -->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-to-slf4j</artifactId>
+				<version>2.17.1</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>2.17.1</version>
+			</dependency>
+			<!-- SpringBoot的依赖配置 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- 阿里数据库连接池 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.xiaoymin</groupId>
+				<artifactId>knife4j-spring-boot-starter</artifactId>
+				<version>${knife4j.version}</version>
+			</dependency>
+
+			<!-- excel工具 -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+
+			<!-- velocity代码生成使用模板 -->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>${velocity.version}</version>
+			</dependency>
+
+			<!-- Token生成与解析 -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>${jwt.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-extension</artifactId>
+				<version>${mybatis-plus.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cn.hutool</groupId>
+				<artifactId>hutool-all</artifactId>
+				<version>${hutool.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-openfeign</artifactId>
+				<version>${feign.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.github.openfeign</groupId>
+				<artifactId>feign-okhttp</artifactId>
+				<version>${feign-okhttp.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-starter-server</artifactId>
+				<version>${spring-boot-admin.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-starter-client</artifactId>
+				<version>${spring-boot-admin.version}</version>
+			</dependency>
+
+			<!--redisson -->
+			<dependency>
+				<groupId>org.redisson</groupId>
+				<artifactId>redisson-spring-boot-starter</artifactId>
+				<version>${redisson.version}</version>
+			</dependency>
+
+			<!-- 定时任务 -->
+			<dependency>
+				<groupId>com.erp</groupId>
+				<artifactId>ruoyi-quartz</artifactId>
+				<version>${ruoyi.version}</version>
+			</dependency>
+
+			<!-- 核心模块 -->
+			<dependency>
+				<groupId>com.erp</groupId>
+				<artifactId>ruoyi-framework</artifactId>
+				<version>${ruoyi.version}</version>
+			</dependency>
+
+			<!-- 系统模块 -->
+			<dependency>
+				<groupId>com.erp</groupId>
+				<artifactId>ruoyi-system</artifactId>
+				<version>${ruoyi.version}</version>
+			</dependency>
+
+			<!-- 通用工具 -->
+			<dependency>
+				<groupId>com.erp</groupId>
+				<artifactId>ruoyi-common</artifactId>
+				<version>${ruoyi.version}</version>
+			</dependency>
+
+			<!-- demo模块 -->
+			<dependency>
+				<groupId>com.erp</groupId>
+				<artifactId>ruoyi-demo</artifactId>
+				<version>${ruoyi.version}</version>
+			</dependency>
+
+			<!-- 业务模块 -->
+			<dependency>
+				<groupId>com.erp</groupId>
+				<artifactId>ruoyi-biz</artifactId>
+				<version>${ruoyi.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<modules>
+		<module>ruoyi-admin</module>
+		<module>ruoyi-framework</module>
+		<module>ruoyi-system</module>
+		<module>ruoyi-quartz</module>
+		<module>ruoyi-common</module>
+		<module>ruoyi-demo</module>
+		<module>ruoyi-biz</module>
+	</modules>
+	<packaging>pom</packaging>
+
+
+	<dependencies>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.6.0.1398</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<nonFilteredFileExtensions>
+						<nonFilteredFileExtension>xlsx</nonFilteredFileExtension>
+						<nonFilteredFileExtension>xls</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<!--打包该目录下的 application.yml -->
+				<directory>src/main/resources</directory>
+				<!-- 启用过滤 即该资源中的变量将会被过滤器中的值替换 -->
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>public</id>
+			<name>aliyun nexus</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>public</id>
+			<name>aliyun nexus</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<!-- 环境标识，需要与配置文件的名称相对应 -->
+				<profiles.active>dev</profiles.active>
+				<logging.level>debug</logging.level>
+			</properties>
+			<activation>
+				<!-- 默认环境 -->
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<!-- 环境标识，需要与配置文件的名称相对应 -->
+				<profiles.active>test</profiles.active>
+				<logging.level>warn</logging.level>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<profiles.active>prod</profiles.active>
+				<logging.level>warn</logging.level>
+			</properties>
+		</profile>
+	</profiles>
+
+</project>

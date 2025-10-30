@@ -1,0 +1,44 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    druid:
+      master:
+        url: jdbc:mysql://121.41.8.10:3306/xxx-dev?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&autoReconnect=true&autoReconnectForPools=true&allowMultiQueries=true
+        username: njqs
+        password: Aaa123+-+-
+      slave:
+        enabled: false
+        url:
+        username:
+        password:
+  redis:
+    host: localhost
+    port: 6379
+    database: 8
+    # password: Aaa123+-+-
+
+erp:
+  apiUrl: https://pc.uat.xxx.cn/api
+  wapUrl: https://wap.uat.xxx.cn
+  pcUrl: https://pc.uat.xxx.cn
+
+wx:
+  mp:
+    configs:
+      - appId: # 第一个公众号的appid
+        secret: # 公众号的appsecret
+        token:  # 接口配置里的Token值
+        aesKey:  # 接口配置里的EncodingAESKey值
+  miniapp:
+    configs:
+      - appid: #微信小程序的appid
+        secret: #微信小程序的Secret
+        token: #微信小程序消息服务器配置的token
+        aesKey: #微信小程序消息服务器配置的EncodingAESKey
+        msgDataFormat: JSON
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

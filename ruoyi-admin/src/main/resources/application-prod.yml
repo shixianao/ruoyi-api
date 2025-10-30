@@ -1,0 +1,29 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    druid:
+      master:
+        url: jdbc:mysql://121.41.8.10:3306/xxx-prod?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&autoReconnect=true&autoReconnectForPools=true&allowMultiQueries=true
+        username: njqs
+        password: Aaa123+-+-
+      slave:
+        enabled: false
+        url:
+        username:
+        password:
+  redis:
+    host: localhost
+    port: 6379
+    database: 8
+    # password: Aaa123+-+-
+
+erp:
+  apiUrl: https://pc.xxx.cn/api
+  wapUrl: https://wap.xxx.cn
+  pcUrl: https://pc.xxx.cn
+
+captcha:
+  smsEnable: true
+

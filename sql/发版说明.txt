@@ -1,0 +1,4 @@
+1、刷sys_menu、sys_dict_type、sys_dict_data、sys_config
+2、配置角色及权限
+3、配置定时任务
+4、试试excel导出好不好用，可能需要修改路径
