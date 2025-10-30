@@ -5,9 +5,9 @@ spring:
   datasource:
     druid:
       master:
-        url: jdbc:mysql://121.41.8.10:3306/xxx-dev?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&autoReconnect=true&autoReconnectForPools=true&allowMultiQueries=true
-        username: njqs
-        password: Aaa123+-+-
+        url: jdbc:mysql://39.101.184.89:3306/ruoyi_test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+        username: root
+        password: Szz$$2020
       slave:
         enabled: false
         url:

@@ -1,30 +1,24 @@
 package com.erp.demo.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.erp.common.utils.PageUtils;
-import com.erp.common.core.page.TableDataInfo;
-import com.erp.common.core.service.impl.DiBaseServiceImpl;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.diboot.core.binding.QueryBuilder;
 import com.diboot.core.vo.Pagination;
+import com.erp.common.core.page.TableDataInfo;
+import com.erp.common.core.service.impl.DiBaseServiceImpl;
+import com.erp.common.utils.PageUtils;
 import com.erp.demo.bo.TestDemoRouteAddBo;
-import com.erp.demo.bo.TestDemoRouteQueryBo;
 import com.erp.demo.bo.TestDemoRouteEditBo;
+import com.erp.demo.bo.TestDemoRouteQueryBo;
 import com.erp.demo.domain.TestDemoRoute;
 import com.erp.demo.mapper.TestDemoRouteMapper;
-import com.erp.demo.vo.TestDemoRouteVo;
-import com.erp.framework.security.util.AuthUtil;
-import com.erp.module.bpm.api.task.BpmProcessInstanceApi;
-import com.erp.module.bpm.api.task.dto.BpmProcessInstanceCreateReqDTO;
 import com.erp.demo.service.ITestDemoRouteService;
+import com.erp.demo.vo.TestDemoRouteVo;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * 测试单RouteService业务层处理
@@ -38,8 +32,8 @@ public class TestDemoRouteServiceImpl extends DiBaseServiceImpl<TestDemoRouteMap
 
 	public static final String PROCESS_KEY = "demoRoute";
 
-	@Autowired
-	private BpmProcessInstanceApi bpmProcessInstanceApi;
+//	@Autowired
+//	private BpmProcessInstanceApi bpmProcessInstanceApi;
 
 	@Override
 	public TestDemoRouteVo queryById(Long id) {
@@ -69,14 +63,14 @@ public class TestDemoRouteServiceImpl extends DiBaseServiceImpl<TestDemoRouteMap
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public Boolean insertByAddBo(TestDemoRouteAddBo bo) {
-		TestDemoRoute add = BeanUtil.toBean(bo, TestDemoRoute.class);
-		validEntityBeforeSave(add);
-		add.setProcessToChangeId(-1L);
-		Boolean r = createEntity(add);
-		String procInstId = bpmProcessInstanceApi.createProcessInstance(AuthUtil.getUserId(), new BpmProcessInstanceCreateReqDTO()
-				.setBusinessKey(String.valueOf(add.getId())).setProcessDefinitionKey(PROCESS_KEY));
-		updateEntity(new TestDemoRoute().setProcessInstanceId(procInstId).setId(add.getId()));
-		return r;
+//		TestDemoRoute add = BeanUtil.toBean(bo, TestDemoRoute.class);
+//		validEntityBeforeSave(add);
+//		add.setProcessToChangeId(-1L);
+//		Boolean r = createEntity(add);
+//		String procInstId = bpmProcessInstanceApi.createProcessInstance(AuthUtil.getUserId(), new BpmProcessInstanceCreateReqDTO()
+//				.setBusinessKey(String.valueOf(add.getId())).setProcessDefinitionKey(PROCESS_KEY));
+//		updateEntity(new TestDemoRoute().setProcessInstanceId(procInstId).setId(add.getId()));
+		return false;
 	}
 
 	@Override
@@ -95,9 +89,9 @@ public class TestDemoRouteServiceImpl extends DiBaseServiceImpl<TestDemoRouteMap
 		change.setId(null);
 		validEntityBeforeSave(change);
 		Boolean r = createEntity(change);
-		String procInstId = bpmProcessInstanceApi.createProcessInstance(AuthUtil.getUserId(), new BpmProcessInstanceCreateReqDTO()
-				.setBusinessKey(String.valueOf(change.getId())).setProcessDefinitionKey(PROCESS_KEY));
-		updateEntity(new TestDemoRoute().setProcessInstanceId(procInstId).setId(change.getId()));
+//		String procInstId = bpmProcessInstanceApi.createProcessInstance(AuthUtil.getUserId(), new BpmProcessInstanceCreateReqDTO()
+//				.setBusinessKey(String.valueOf(change.getId())).setProcessDefinitionKey(PROCESS_KEY));
+//		updateEntity(new TestDemoRoute().setProcessInstanceId(procInstId).setId(change.getId()));
 		return r;
 	}
 
